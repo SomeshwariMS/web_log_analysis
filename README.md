@@ -1,4 +1,3 @@
-```
 # Web Log Analysis Project
 
 This project analyzes web server logs to provide insights into page views, unique visitors, and more. Geolocation information is also included for each visitor.
