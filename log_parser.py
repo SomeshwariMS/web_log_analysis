@@ -53,9 +53,9 @@ def analyze_logs(parsed_logs):
 
     return analysis_results
 
-def plot_top_pages_by_views(top_pages_by_views):
+def plot_top_pages_by_views(top_pages_by_views, output_path):
     """
-    Create a bar chart to visualize the top pages by page views.
+    Create a bar chart to visualize the top pages by page views and save it.
     """
     urls = list(top_pages_by_views.keys())
     page_views = list(top_pages_by_views.values())
@@ -65,7 +65,8 @@ def plot_top_pages_by_views(top_pages_by_views):
     plt.ylabel('Page Views')
     plt.title('Top Pages by Page Views')
     plt.xticks(rotation=45, ha='right')
-    plt.show()
+    plt.savefig(output_path)  # Save the plot to a file
+    plt.close()  # Close the plot to avoid displaying it in the console
 
 def main():
     # Read the log file
@@ -91,8 +92,9 @@ def main():
     for key, value in analysis_results.items():
         print(f'{key}: {value}')
 
-    # Visualize top pages by views
-    plot_top_pages_by_views(analysis_results['top_pages_by_views'])
+    # Visualize top pages by views and save the plot
+    output_path = 'visualizations/top_pages_by_views.png'
+    plot_top_pages_by_views(analysis_results['top_pages_by_views'], output_path)
 
 if __name__ == "__main__":
     main()
